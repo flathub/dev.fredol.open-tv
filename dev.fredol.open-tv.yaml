@@ -55,9 +55,6 @@ modules:
         url: https://gitlab.freedesktop.org/xorg/lib/libxmu.git
         tag: libXmu-1.2.1
         commit: 792f80402ee06ce69bca3a8f2a84295999c3a170
-        x-checker-data:
-          type: git
-          tag-pattern: ^libXmu-([\d.]+)$
 
   - name: xclip
     buildsystem: autotools
@@ -66,9 +63,7 @@ modules:
         url: https://github.com/astrand/xclip.git
         tag: "0.13"
         commit: 9aa7090c3b8b437c6489edca32ae43d82e0c1281
-        x-checker-data:
-          type: git
-          tag-pattern: ^(\d+\.\d+)$
+
 
   - name: libXpresent
     buildsystem: autotools
@@ -77,9 +72,6 @@ modules:
         url: https://gitlab.freedesktop.org/xorg/lib/libxpresent.git
         tag: libXpresent-1.0.1
         commit: 37507b5f44332accfb1064ee69a4f6a833994747
-        x-checker-data:
-          type: git
-          tag-pattern: ^libXpresent-([\d.]+)$
 
   - name: luajit
     no-autogen: true
@@ -111,11 +103,6 @@ modules:
       - type: archive
         url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.09.27/yt-dlp.tar.gz
         sha256: ffce6ebd742373eff6dac89b23f706ec7513a0367160eb8b5a550cd706cd883f
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
-          version-query: .tag_name
-          url-query: .assets[] | select(.name=="yt-dlp.tar.gz") | .browser_download_url
 
   - name: uchardet
     buildsystem: cmake-ninja
@@ -131,11 +118,6 @@ modules:
       - type: archive
         url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
         sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
-        x-checker-data:
-          type: html
-          url: https://www.freedesktop.org/software/uchardet/releases/
-          version-pattern: uchardet-(\d\.\d+\.?\d*).tar.xz
-          url-template: https://www.freedesktop.org/software/uchardet/releases/uchardet-$version.tar.xz
 
   - name: libass
     cleanup:
@@ -151,9 +133,6 @@ modules:
         url: https://github.com/libass/libass.git
         tag: 0.17.3
         commit: e46aedea0a0d17da4c4ef49d84b94a7994664ab5
-        x-checker-data:
-          type: git
-          tag-pattern: ^(\d\.\d{1,3}\.\d{1,2})$
 
   - name: libaacs
     config-opts:
@@ -169,11 +148,6 @@ modules:
         mirror-urls:
           - https://videolan.mirror.ba/libaacs/0.11.1/libaacs-0.11.1.tar.bz2
           - https://videolan.c3sl.ufpr.br/libaacs/0.11.1/libaacs-0.11.1.tar.bz2
-        x-checker-data:
-          type: html
-          url: https://www.videolan.org/developers/libaacs.html
-          version-pattern: Latest release is <b>libaacs (\d\.\d+\.?\d*)</b>
-          url-template: https://download.videolan.org/pub/videolan/libaacs/$version/libaacs-$version.tar.bz2
 
   - name: zimg
     config-opts:
@@ -187,12 +161,6 @@ modules:
         archive-type: tar
         url: https://api.github.com/repos/sekrit-twc/zimg/tarball/release-3.0.5
         sha256: 1b8998f03f4a49e4d730033143722b32bc28a5306ef809ccfb3b4bbb29e4b784
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/sekrit-twc/zimg/releases/latest
-          url-query: .tarball_url
-          version-query: .tag_name | sub("^release-"; "")
-          timestamp-query: .published_at
 
   - name: Tesseract
     config-opts:
@@ -206,11 +174,6 @@ modules:
           - type: archive
             url: http://www.leptonica.org/source/leptonica-1.84.1.tar.gz
             sha256: 2b3e1254b1cca381e77c819b59ca99774ff43530209b9aeb511e1d46588a64f6
-            x-checker-data:
-              type: anitya
-              project-id: 1549
-              stable-only: true
-              url-template: http://www.leptonica.org/source/leptonica-$version.tar.gz
         cleanup:
           - /bin
     sources:
@@ -218,12 +181,6 @@ modules:
         url: https://github.com/tesseract-ocr/tesseract.git
         tag: 5.4.1
         commit: b5f279ec7582dc57f6464557ed938558791f200d
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/tesseract-ocr/tesseract/releases/latest
-          timestamp-query: .published_at
-          tag-query: .tag_name
-          version-query: .tag_name
     cleanup:
       - /bin
 
@@ -237,11 +194,6 @@ modules:
       - type: archive
         url: https://github.com/ImageMagick/ImageMagick/archive/7.1.1-38.tar.gz
         sha256: 5e449530ccec8b85ae2bfd1ad773184fb7a4737d40fd9439db8a5d4beee4403e
-        x-checker-data:
-          type: anitya
-          project-id: 1372
-          stable-only: true
-          url-template: https://github.com/ImageMagick/ImageMagick/archive/$version.tar.gz
     cleanup:
       - /bin
       - /etc
@@ -260,9 +212,6 @@ modules:
           - https://hg.sr.ht/~breakfastquay/rubberband
         tag: v3.3.0
         commit: 2be46b0dffb13273a67396c77bc9278736bb03d2
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
 
   - name: mujs
     buildsystem: autotools
@@ -283,10 +232,6 @@ modules:
           - http://git.ghostscript.com/mujs.git
         tag: 1.3.5
         commit: 0df0707f2f10187127e36acfbc3ba9b9ca5b5cf0
-        x-checker-data:
-          type: git
-          url: https://api.github.com/repos/ccxvii/mujs/tags
-          tag-pattern: ^([\d.]+)$
 
   - name: nv-codec-headers
     cleanup:
@@ -301,9 +246,6 @@ modules:
           - https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
         tag: n12.2.72.0
         commit: c69278340ab1d5559c7d7bf0edf615dc33ddbba7
-        x-checker-data:
-          type: git
-          tag-pattern: ^n([\d.]+)$
 
   - name: x264
     cleanup:
@@ -321,12 +263,6 @@ modules:
         commit: c24e06c2e184345ceb33eb20a15d1024d9fd3497
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
-        x-checker-data:
-          type: json
-          url: https://code.videolan.org/api/v4/projects/536/repository/commits
-          commit-query: first( .[].id )
-          version-query: first( .[].id )
-          timestamp-query: first( .[].committed_date )
 
   - name: x265
     buildsystem: cmake-ninja
@@ -343,9 +279,6 @@ modules:
         url: https://bitbucket.org/multicoreware/x265_git.git
         tag: "4.0"
         commit: 6318f223684118a2c71f67f3f4633a9e35046b00
-        x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
 
   - name: libmysofa
     buildsystem: cmake-ninja
@@ -356,9 +289,6 @@ modules:
         commit: 33974839677da7044ef5a70be7ad5550735aae6e
         tag: v1.3.2
         url: https://github.com/hoene/libmysofa.git
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
 
   - name: libbs2b
     buildsystem: autotools
@@ -372,11 +302,6 @@ modules:
         archive-type: tar
         url: https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-3.1.0.tar.gz
         sha256: 6aaafd81aae3898ee40148dd1349aab348db9bfae9767d0e66e0b07ddd4b2528
-        x-checker-data:
-          type: html
-          url: https://sourceforge.net/projects/bs2b/files/libbs2b/
-          version-pattern: projects/bs2b/files/libbs2b/(\d+\.\d+\.\d+)
-          url-template: https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-$version.tar.gz
       # https://src.fedoraproject.org/rpms/libbs2b/blob/rawhide/f/libbs2b.spec#_40
       - type: shell
         commands:
@@ -429,9 +354,6 @@ modules:
           - https://git.ffmpeg.org/ffmpeg.git
         commit: b08d7969c550a804a59511c7b83f2dd8cc0499b8
         tag: n7.1
-        x-checker-data:
-          type: git
-          tag-pattern: ^n([\d.]{3,7})$
 
   - name: libsixel
     buildsystem: meson
@@ -443,11 +365,6 @@ modules:
         archive-type: tar
         url: https://api.github.com/repos/libsixel/libsixel/tarball/refs/tags/v1.10.3
         sha256: 7be774befba882d53701e131b6657836118f6cdb15a7515f92345c7bb6e2bb5c
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/libsixel/libsixel/tags
-          url-query: .[0].tarball_url
-          version-query: .[0].name
 
   - name: vapoursynth
     config-opts:
@@ -456,11 +373,6 @@ modules:
       - type: archive
         url: https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R70.tar.gz
         sha256: 59c813ec36046be33812408ff00e16cae63c6843af6acf4e34595910a80e267b
-        x-checker-data:
-          type: anitya
-          project-id: 15982
-          stable-only: true
-          url-template: https://github.com/vapoursynth/vapoursynth/archive/$version.tar.gz
 
   - name: libplacebo
     buildsystem: meson
@@ -477,9 +389,6 @@ modules:
           - https://code.videolan.org/videolan/libplacebo.git
         tag: v7.349.0
         commit: 1fd3c7bde7b943fe8985c893310b5269a09b46c5
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
     modules:
       - name: shaderc
         buildsystem: cmake-ninja
@@ -500,33 +409,21 @@ modules:
             url: https://github.com/google/shaderc.git
             #tag: v2023.7
             commit: 40bced4e1e205ecf44630d2dfa357655b6dabd04
-            #x-checker-data:
-            #  type: git
-            #  tag-pattern: ^v(\d{4}\.\d{1,2})$
           - type: git
             url: https://github.com/KhronosGroup/SPIRV-Tools.git
             tag: v2024.1
             commit: 04896c462d9f3f504c99a4698605b6524af813c1
             dest: third_party/spirv-tools
-            #x-checker-data:
-            #  type: git
-            #  tag-pattern: ^v(\d{4}\.\d{1})$
           - type: git
             url: https://github.com/KhronosGroup/SPIRV-Headers.git
             #tag: sdk-1.3.250.1
             commit: 4f7b471f1a66b6d06462cd4ba57628cc0cd087d7
             dest: third_party/spirv-headers
-            #x-checker-data:
-            #  type: git
-            #  tag-pattern: ^sdk-([\d.]+)$
           - type: git
             url: https://github.com/KhronosGroup/glslang.git
             tag: 15.0.0
             commit: 46ef757e048e760b46601e6e77ae0cb72c97bd2f
             dest: third_party/glslang
-            x-checker-data:
-              type: git
-              tag-pattern: ^(\d{1,2}\.\d{1,2}\.\d{1,4})$
 
   - name: mpv
     buildsystem: meson
@@ -550,9 +447,6 @@ modules:
         url: https://github.com/mpv-player/mpv.git
         tag: v0.39.0
         commit: a0fba7be57f3822d967b04f0f6b6d6341e7516e7
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
 
   - name: mpv-mpris
     no-autogen: true
@@ -563,11 +457,6 @@ modules:
         archive-type: tar
         url: https://api.github.com/repos/hoyon/mpv-mpris/tarball/1.1
         sha256: 08d6b53a41224710ebed1c4d6daee815686e0f2f10e3f81778f4411562ed5958
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/hoyon/mpv-mpris/releases/latest
-          version-query: .name
-          url-query: .tarball_url
 
   # This mpv plugin prevents screen blanking in GNOME (wayland) while playing media.
   - name: mpv_inhibit_gnome
@@ -580,9 +469,6 @@ modules:
         url: https://github.com/Guldoman/mpv_inhibit_gnome.git
         tag: v0.1.3
         commit: 9069be0f15fa2c222d78a183d4aa1477d8a8f2cd
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
       
   ## Open TV
   - name: opentv
