@@ -1,7 +1,7 @@
 id: dev.fredol.open-tv
 
 runtime: org.gnome.Platform
-runtime-version: "46"
+runtime-version: '46'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node20
@@ -26,16 +26,16 @@ finish-args:
   - --talk-name=org.gnome.SessionManager
 
 cleanup:
-  - "*.la"
-  - "*.a"
-  - "/include"
-  - "/lib/cmake"
-  - "/lib/pkgconfig"
-  - "/share/bash-completion"
-  - "/share/cmake"
-  - "/share/doc"
-  - "/share/man"
-  - "/share/zsh"
+  - '*.la'
+  - '*.a'
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/bash-completion
+  - /share/cmake
+  - /share/doc
+  - /share/man
+  - /share/zsh
 
 modules:
   - name: lmdb
@@ -64,7 +64,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/astrand/xclip.git
-        tag: "0.13"
+        tag: '0.13'
         commit: 9aa7090c3b8b437c6489edca32ae43d82e0c1281
         x-checker-data:
           type: git
@@ -290,7 +290,7 @@ modules:
 
   - name: nv-codec-headers
     cleanup:
-      - "*"
+      - '*'
     no-autogen: true
     make-install-args:
       - PREFIX=/app
@@ -318,7 +318,7 @@ modules:
         url: https://github.com/jpsdr/x264
         mirror-urls:
           - https://code.videolan.org/videolan/x264.git
-        commit: c24e06c2e184345ceb33eb20a15d1024d9fd3497
+        commit: 3a8b5be2a256ffc6d8ec4fb35ecfb335d5a4a03b
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
@@ -341,7 +341,7 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/multicoreware/x265_git.git
-        tag: "4.0"
+        tag: '4.0'
         commit: 6318f223684118a2c71f67f3f4633a9e35046b00
         x-checker-data:
           type: git
@@ -382,7 +382,7 @@ modules:
         commands:
           - sed -i -e 's/lzma/xz/g' configure.ac
           - autoreconf -vif
-          
+
   - name: vulkan-headers
     buildsystem: cmake-ninja
     sources:
@@ -583,7 +583,7 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-      
+
   ## Open TV
   - name: opentv
     buildsystem: simple
