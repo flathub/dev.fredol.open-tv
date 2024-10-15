@@ -16,10 +16,10 @@ finish-args:
   - --device=dri
   - --share=ipc
   - --share=network
-  - --filesystem=host:ro
   - --socket=pulseaudio
   - --filesystem=xdg-pictures:rw
   - --filesystem=xdg-videos:rw
+  - --filesystem=xdg-download:ro
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
   - --env=WEBKIT_DISABLE_DMABUF_RENDERER=1
   - --filesystem=xdg-run/pipewire-0:ro
@@ -482,8 +482,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        tag: v1.0.1
-        commit: 9d4bdb95ed7b2b13216bfaa81bfb096148aceaf7
+        commit: d49567fa0cc56adb1964803c473086fb072e1711
+        tag: v1.0.2
       - generated-sources.json
       - cargo-sources.json
     build-commands:
