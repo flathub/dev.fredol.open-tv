@@ -64,7 +64,6 @@ modules:
         tag: "0.13"
         commit: 9aa7090c3b8b437c6489edca32ae43d82e0c1281
 
-
   - name: libXpresent
     buildsystem: autotools
     sources:
@@ -307,7 +306,7 @@ modules:
         commands:
           - sed -i -e 's/lzma/xz/g' configure.ac
           - autoreconf -vif
-          
+
   - name: vulkan-headers
     buildsystem: cmake-ninja
     sources:
@@ -469,7 +468,7 @@ modules:
         url: https://github.com/Guldoman/mpv_inhibit_gnome.git
         tag: v0.1.3
         commit: 9069be0f15fa2c222d78a183d4aa1477d8a8f2cd
-      
+
   ## Open TV
   - name: opentv
     buildsystem: simple
@@ -477,13 +476,13 @@ modules:
       env:
         XDG_CACHE_HOME: /run/build/opentv/flatpak-node/cache
         npm_config_cache: /run/build/opentv/flatpak-node/npm-cache
-        npm_config_offline: 'true'
+        npm_config_offline: "true"
         CARGO_HOME: /run/build/opentv/cargo
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        commit: 60174117d49705d9830ef710009e4ab04c289ffc
-        tag: v1.2.0
+        commit: 1445ee155157971669e578704f9d842de49a8e64
+        tag: v1.3.0
       - generated-sources.json
       - cargo-sources.json
     build-commands:
