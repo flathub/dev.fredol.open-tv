@@ -483,8 +483,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        commit: cad23b207737e447b8e0671b2316954e7fd58044
-        tag: v1.5.1
+        commit: acc35aa4f4570eef6970a10b26acaac5445226a0
+        tag: v1.5.2
       - generated-sources.json
       - cargo-sources.json
     build-commands:
