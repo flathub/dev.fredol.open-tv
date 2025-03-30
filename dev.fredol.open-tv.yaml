@@ -1,7 +1,7 @@
 id: dev.fredol.open-tv
 
 runtime: org.gnome.Platform
-runtime-version: "46"
+runtime-version: "48"
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node20
@@ -86,7 +86,7 @@ modules:
         mirror-urls:
           - https://luajit.org/git/luajit.git
         disable-shallow-clone: true
-        commit: 97813fb924edf822455f91a5fbbdfdb349e5984f
+        commit: 538a82133ad6fddfd0ca64de167c4aca3bc1a2da
       - type: shell
         commands:
           - sed -i 's|/usr/local|/app|' ./Makefile
@@ -101,8 +101,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.09.27/yt-dlp.tar.gz
-        sha256: ffce6ebd742373eff6dac89b23f706ec7513a0367160eb8b5a550cd706cd883f
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2025.03.27/yt-dlp.tar.gz
+        sha256: 2a269ae3e9a4510a09c48970e6152223b0bd086c47e55291befda39c070f3756
 
   - name: uchardet
     buildsystem: cmake-ninja
@@ -133,6 +133,18 @@ modules:
         url: https://github.com/libass/libass.git
         tag: 0.17.3
         commit: e46aedea0a0d17da4c4ef49d84b94a7994664ab5
+
+  - name: libgpg-error
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.46.orig.tar.bz2
+        sha256: b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
+
+  - name: libgcrypt
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/libg/libgcrypt20/libgcrypt20_1.10.1.orig.tar.bz2
+        sha256: ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de
 
   - name: libaacs
     config-opts:
@@ -172,8 +184,8 @@ modules:
           - --with-pic
         sources:
           - type: archive
-            url: http://www.leptonica.org/source/leptonica-1.84.1.tar.gz
-            sha256: 2b3e1254b1cca381e77c819b59ca99774ff43530209b9aeb511e1d46588a64f6
+            url: http://www.leptonica.org/source/leptonica-1.85.0.tar.gz
+            sha256: 3745ae3bf271a6801a2292eead83ac926e3a9bc1bf622e9cd4dd0f3786e17205
         cleanup:
           - /bin
     sources:
@@ -192,8 +204,8 @@ modules:
       - --with-pic
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/7.1.1-38.tar.gz
-        sha256: 5e449530ccec8b85ae2bfd1ad773184fb7a4737d40fd9439db8a5d4beee4403e
+        url: https://github.com/ImageMagick/ImageMagick/archive/7.1.1-46.tar.gz
+        sha256: 58cd8f7f2c9aaf49dba5af6f740a7a295cecb76493c475402265b3e7c21e3cd0
     cleanup:
       - /bin
       - /etc
@@ -210,8 +222,8 @@ modules:
         url: https://github.com/breakfastquay/rubberband.git
         mirror-urls:
           - https://hg.sr.ht/~breakfastquay/rubberband
-        tag: v3.3.0
-        commit: 2be46b0dffb13273a67396c77bc9278736bb03d2
+        tag: v4.0.0
+        commit: 1d95888bec3ae0a17c0c4af791810d5a63f6bc35
 
   - name: mujs
     buildsystem: autotools
@@ -230,8 +242,8 @@ modules:
         url: https://github.com/ccxvii/mujs.git
         mirror-urls:
           - http://git.ghostscript.com/mujs.git
-        tag: 1.3.5
-        commit: 0df0707f2f10187127e36acfbc3ba9b9ca5b5cf0
+        tag: 1.3.6
+        commit: cc569c5fa9a7a2498177693b5617605c2ff5b260
 
   - name: nv-codec-headers
     cleanup:
@@ -244,8 +256,8 @@ modules:
         url: https://github.com/FFmpeg/nv-codec-headers.git
         mirror-urls:
           - https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        tag: n12.2.72.0
-        commit: c69278340ab1d5559c7d7bf0edf615dc33ddbba7
+        tag: n13.0.19.0
+        commit: e844e5b26f46bb77479f063029595293aa8f812d
 
   - name: x264
     cleanup:
@@ -260,9 +272,7 @@ modules:
         url: https://github.com/jpsdr/x264
         mirror-urls:
           - https://code.videolan.org/videolan/x264.git
-        commit: c24e06c2e184345ceb33eb20a15d1024d9fd3497
-        # Every commit to the master branch is considered a release
-        # https://code.videolan.org/videolan/x264/-/issues/35
+        commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
 
   - name: x265
     buildsystem: cmake-ninja
@@ -286,8 +296,8 @@ modules:
       - -DBUILD_TESTS=OFF
     sources:
       - type: git
-        commit: 33974839677da7044ef5a70be7ad5550735aae6e
-        tag: v1.3.2
+        commit: 444d2c1d7ececf5cc2d96d3b17b209047b02318d
+        tag: v1.3.3
         url: https://github.com/hoene/libmysofa.git
 
   - name: libbs2b
@@ -352,8 +362,8 @@ modules:
         url: https://github.com/FFmpeg/FFmpeg.git
         mirror-urls:
           - https://git.ffmpeg.org/ffmpeg.git
-        commit: b08d7969c550a804a59511c7b83f2dd8cc0499b8
-        tag: n7.1
+        commit: db69d06eeeab4f46da15030a80d539efb4503ca8
+        tag: n7.1.1
 
   - name: libsixel
     buildsystem: meson
@@ -403,26 +413,27 @@ modules:
           - /bin
           - /include
           - /lib/cmake
+          - "*.a"
           - /lib/pkgconfig
         sources:
           - type: git
             url: https://github.com/google/shaderc.git
-            #tag: v2023.7
-            commit: 40bced4e1e205ecf44630d2dfa357655b6dabd04
+            tag: v2025.1
+            commit: 0968768c61d4eb7dd861114412e904bb3d59b7b6
           - type: git
             url: https://github.com/KhronosGroup/SPIRV-Tools.git
-            tag: v2024.1
-            commit: 04896c462d9f3f504c99a4698605b6524af813c1
+            tag: v2025.1.rc1
+            commit: f289d047f49fb60488301ec62bafab85573668cc
             dest: third_party/spirv-tools
           - type: git
             url: https://github.com/KhronosGroup/SPIRV-Headers.git
-            #tag: sdk-1.3.250.1
-            commit: 4f7b471f1a66b6d06462cd4ba57628cc0cd087d7
+            tag: vulkan-sdk-1.4.309.0
+            commit: 09913f088a1197aba4aefd300a876b2ebbaa3391
             dest: third_party/spirv-headers
           - type: git
             url: https://github.com/KhronosGroup/glslang.git
-            tag: 15.0.0
-            commit: 46ef757e048e760b46601e6e77ae0cb72c97bd2f
+            tag: 15.2.0
+            commit: 99ee11b0106b48f06fb9e2a324ba928b8316cc33
             dest: third_party/glslang
 
   - name: mpv
@@ -434,8 +445,8 @@ modules:
       - -Ddvbin=enabled
       - -Dlibarchive=enabled
       - -Dsdl2=enabled
-      #- -Dshaderc=enabled
       - -Dvulkan=enabled
+      - -Dshaderc=disabled
       # - -Dvulkan-interop=enabled
     cleanup:
       - /include
@@ -445,8 +456,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mpv-player/mpv.git
-        tag: v0.39.0
-        commit: a0fba7be57f3822d967b04f0f6b6d6341e7516e7
+        tag: v0.40.0
+        commit: e48ac7ce08462f5e33af6ef9deeac6fa87eef01e
 
   - name: mpv-mpris
     no-autogen: true
