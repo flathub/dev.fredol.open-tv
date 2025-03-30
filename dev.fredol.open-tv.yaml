@@ -1,7 +1,7 @@
 id: dev.fredol.open-tv
 
 runtime: org.gnome.Platform
-runtime-version: "46"
+runtime-version: "48"
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node20
@@ -133,6 +133,18 @@ modules:
         url: https://github.com/libass/libass.git
         tag: 0.17.3
         commit: e46aedea0a0d17da4c4ef49d84b94a7994664ab5
+
+  - name: libgpg-error
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.46.orig.tar.bz2
+        sha256: b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
+
+  - name: libgcrypt
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/libg/libgcrypt20/libgcrypt20_1.10.1.orig.tar.bz2
+        sha256: ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de
 
   - name: libaacs
     config-opts:
