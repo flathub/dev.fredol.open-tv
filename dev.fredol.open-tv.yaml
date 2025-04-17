@@ -463,6 +463,7 @@ modules:
     no-autogen: true
     make-install-args:
       - SCRIPTS_DIR=/app/etc/mpv/scripts
+      - PREFIX=/app
     sources:
       - type: archive
         archive-type: tar
@@ -494,8 +495,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        commit: acc35aa4f4570eef6970a10b26acaac5445226a0
-        tag: v1.5.2
+        commit: 9479d75682fadac132768782426c4cf181fd5760
+        tag: v1.6.1
       - generated-sources.json
       - cargo-sources.json
     build-commands:
