@@ -18,12 +18,8 @@ finish-args:
   - --share=ipc
   - --share=network
   - --socket=pulseaudio
-  - --filesystem=xdg-pictures:rw
-  - --filesystem=xdg-videos:rw
-  - --filesystem=xdg-download:ro
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
   - --env=WEBKIT_DISABLE_DMABUF_RENDERER=1
-  - --filesystem=xdg-run/pipewire-0:ro
   - --talk-name=org.gnome.SessionManager
 
 cleanup:
@@ -495,8 +491,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        commit: 9479d75682fadac132768782426c4cf181fd5760
-        tag: v1.6.1
+        commit: d285b1c5c3a8125c5b594ae6c88eaf71c9fe25e0
+        tag: v1.7.0
       - generated-sources.json
       - cargo-sources.json
     build-commands:
