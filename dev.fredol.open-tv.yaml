@@ -6,7 +6,6 @@ sdk: org.gnome.Sdk
 sdk-extensions:
     - org.freedesktop.Sdk.Extension.node20
     - org.freedesktop.Sdk.Extension.rust-stable
-    - org.freedesktop.Sdk.Extension.mono6
 base: io.mpv.Mpv
 base-version: stable
 build-options:
@@ -22,6 +21,8 @@ finish-args:
     - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
     - --env=WEBKIT_DISABLE_DMABUF_RENDERER=1
     - --talk-name=org.gnome.SessionManager
+inherit-extension:
+  - org.freedesktop.Platform.ffmpeg-full
 
 modules:
     - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
