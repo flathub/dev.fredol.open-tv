@@ -35,7 +35,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/Fredolx/open-tv
-        branch: temp-flatpak-fix
         commit: 72843599c2d973fcbb0e3c44e03be3694d0c8104
       - generated-sources.json
       - cargo-sources.json
