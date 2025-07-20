@@ -30,7 +30,6 @@ modules:
       env:
         XDG_CACHE_HOME: /run/build/opentv/flatpak-node/cache
         npm_config_cache: /run/build/opentv/flatpak-node/npm-cache
-        npm_config_nodedir: /usr/lib/sdk/node20
         npm_config_offline: "true"
         CARGO_HOME: /run/build/opentv/cargo
     sources:
