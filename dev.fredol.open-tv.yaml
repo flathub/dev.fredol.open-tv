@@ -4,12 +4,12 @@ runtime: org.gnome.Platform
 runtime-version: "48"
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node20
-  - org.freedesktop.Sdk.Extension.rust-stable
+    - org.freedesktop.Sdk.Extension.node20
+    - org.freedesktop.Sdk.Extension.rust-stable
 base: io.mpv.Mpv
 base-version: stable
 build-options:
-  append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
+    append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
 command: open_tv
 finish-args:
     - --socket=wayland
@@ -23,28 +23,28 @@ finish-args:
     - --talk-name=org.gnome.SessionManager
 
 modules:
-  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
-  - name: opentv
-    buildsystem: simple
-    build-options:
-      env:
-        XDG_CACHE_HOME: /run/build/opentv/flatpak-node/cache
-        npm_config_cache: /run/build/opentv/flatpak-node/npm-cache
-        npm_config_offline: "true"
-        CARGO_HOME: /run/build/opentv/cargo
-    sources:
-      - type: git
-        url: https://github.com/Fredolx/open-tv
-        commit: 98d392ebbc4c81811dfe1b89dccdb88630e474b1
-      - generated-sources.json
-      - cargo-sources.json
-    build-commands:
-      - npm install --offline --verbose
-      - cargo --offline fetch --manifest-path src-tauri/Cargo.toml --verbose
-      - npm run tauri build -- --no-bundle
-      - install -Dm755 src-tauri/target/release/open_tv /app/bin/open_tv
-      - install -Dm644 flatpak/open_tv.desktop /app/share/applications/dev.fredol.open-tv.desktop
-      - install -Dm644 flatpak/dev.fredol.open-tv.metainfo.xml /app/share/metainfo/dev.fredol.open-tv.metainfo.xml
-      - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/dev.fredol.open-tv.png
-      - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/dev.fredol.open-tv.png
-      - install -Dm644 src-tauri/icons/icon.png /app/share/icons/hicolor/256x256@2/apps/dev.fredol.open-tv.png
+    - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
+    - name: opentv
+      buildsystem: simple
+      build-options:
+          env:
+              XDG_CACHE_HOME: /run/build/opentv/flatpak-node/cache
+              npm_config_cache: /run/build/opentv/flatpak-node/npm-cache
+              npm_config_offline: "true"
+              CARGO_HOME: /run/build/opentv/cargo
+      sources:
+          - type: git
+            url: https://github.com/Fredolx/open-tv
+            commit: fb353060837dad5dd223016adfac5849c6d01044
+          - generated-sources.json
+          - cargo-sources.json
+      build-commands:
+          - npm install --offline --verbose
+          - cargo --offline fetch --manifest-path src-tauri/Cargo.toml --verbose
+          - npm run tauri build -- --no-bundle
+          - install -Dm755 src-tauri/target/release/open_tv /app/bin/open_tv
+          - install -Dm644 flatpak/open_tv.desktop /app/share/applications/dev.fredol.open-tv.desktop
+          - install -Dm644 flatpak/dev.fredol.open-tv.metainfo.xml /app/share/metainfo/dev.fredol.open-tv.metainfo.xml
+          - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/dev.fredol.open-tv.png
+          - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/dev.fredol.open-tv.png
+          - install -Dm644 src-tauri/icons/icon.png /app/share/icons/hicolor/256x256@2/apps/dev.fredol.open-tv.png
