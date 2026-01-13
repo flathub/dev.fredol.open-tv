@@ -23,7 +23,6 @@ finish-args:
   - --talk-name=org.gnome.SessionManager
 
 modules:
-  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
   - name: opentv
     buildsystem: simple
     build-options:
