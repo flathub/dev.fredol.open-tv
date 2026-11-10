@@ -1,15 +1,15 @@
 id: dev.fredol.open-tv
 
 runtime: org.gnome.Platform
-runtime-version: "49"
+runtime-version: "51"
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node20
+  - org.freedesktop.Sdk.Extension.node22
   - org.freedesktop.Sdk.Extension.rust-stable
 base: io.mpv.Mpv
 base-version: stable
 build-options:
-  append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
+  append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin
 command: open_tv
 finish-args:
   - --socket=wayland
